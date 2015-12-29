@@ -23,8 +23,8 @@ function createPayload(distributionId, invalidations, opts) {
 module.exports = function(distributionId, invalidations, opts, cb) {
     opts = opts || {};
     invalidations = invalidations || {};
-    assert(distributionId);
-    assert(invalidations.length);
+    assert(distributionId, 'Distribution ID not set');
+    assert(invalidations.length, 'No invalidation rules defined');
     const cloudfront = new Aws.CloudFront();
     const payload = createPayload(distributionId, invalidations, opts);
     cloudfront.createInvalidation(payload, cb);
