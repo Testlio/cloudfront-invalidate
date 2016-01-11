@@ -20,6 +20,7 @@ console.log('Invalidating cache for paths: ', program.args);
 invalidateCache(program.distributionId, program.args, opts, function(err, data) {
     if (err) {
         console.error('Failed: ', err);
+        process.exit(1);
     } else {
         console.log(data);
     }
